@@ -194,7 +194,7 @@ html
   <!-- =====================================================================
        SECÇÃO HERO: CENÁRIO CINEMATOGRÁFICO, AGENTE WINGMAN & LOGOTIPO 3D
   ====================================================================== -->
-  <header class="relative w-full hero-atmosphere pt-8 sm:pt-12 pb-10 sm:pb-14 overflow-hidden flex flex-col items-center">
+  <header class="relative w-full hero-atmosphere pt-6 sm:pt-10 pb-8 sm:pb-12 overflow-hidden flex flex-col items-center">
 
     <!-- Fundo Vetorial: Céu Estrelado, Lua Dourada, Feixes Volumétricos & Skyline -->
     <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
@@ -267,7 +267,7 @@ html
 
     <!-- Personagem Central (Agente Wingman / Cupido Noturno com Rim Lighting) -->
     <div class="relative z-10 w-full max-w-[660px] px-2 flex justify-center">
-      <svg class="w-full h-auto max-h-[410px] sm:max-h-[475px] drop-shadow-[0_22px_38px_rgba(0,0,0,0.85)]" viewBox="0 0 760 610" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="w-full h-auto max-h-[340px] sm:max-h-[450px] drop-shadow-[0_22px_38px_rgba(0,0,0,0.85)]" viewBox="0 0 760 610" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <!-- Ouro Champanhe Metálico -->
           <linearGradient id="champagneGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -442,7 +442,7 @@ html
     </div>
 
     <!-- ================= LOGOTIPO 3D METÁLICO "OPERAÇÃO MANDA DM" ================= -->
-    <div class="relative z-20 -mt-32 sm:-mt-40 w-full max-w-[490px] sm:max-w-[580px] px-4 flex flex-col items-center animate-hero-float">
+    <div class="relative z-20 -mt-20 sm:-mt-32 w-full max-w-[490px] sm:max-w-[580px] px-4 flex flex-col items-center animate-hero-float">
       <div class="relative w-full overflow-hidden rounded-3xl">
         <svg class="w-full h-auto drop-shadow-[0_18px_32px_rgba(0,0,0,0.92)]" viewBox="0 0 660 285" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -507,7 +507,7 @@ html
       </div>
 
       <!-- Cápsula Translúcida Editorial -->
-      <div class="studio-glass -mt-2 sm:-mt-3 px-4 sm:px-6 py-2 rounded-full flex items-center gap-2.5 border border-[#f5d08a]/50 shadow-xl">
+      <div class="studio-glass mt-1 sm:-mt-2 px-4 sm:px-6 py-2 rounded-full flex items-center gap-2.5 border border-[#f5d08a]/50 shadow-xl">
         <span class="text-sm sm:text-base">⏳</span>
         <h1 id="hero-subtitle" class="font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.14em] uppercase text-[#fff3d6] text-center">
           O TEMPO ESTÁ A ACABAR, SOLDADO!
@@ -522,13 +522,13 @@ html
   <!-- =====================================================================
        SECÇÃO INFERIOR: RELÓGIO DE PRECISÃO, BARRA DA NOITE & BANNER DE PRAZO
   ====================================================================== -->
-  <main class="relative flex-1 w-full vault-atmosphere pt-7 sm:pt-9 pb-12 sm:pb-16 px-4 flex flex-col items-center justify-center overflow-hidden">
+  <main class="relative z-10 flex-1 w-full vault-atmosphere pt-8 sm:pt-10 pb-12 sm:pb-16 px-4 flex flex-col items-center justify-start overflow-x-clip">
 
     <!-- ================= 4 CARTÕES DE LUXO (DIAS, HORAS, MIN, SEG) ================= -->
     <section aria-label="Contagem Regressiva até à Meia-Noite" class="relative z-20 w-full max-w-[780px] grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5 mb-6 sm:mb-8">
 
       <!-- CARTÃO 1: DIAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
         <!-- Ornamento Superior com Coração de Rubi -->
         <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
           <span>01</span>
@@ -538,7 +538,7 @@ html
           <span>SYS</span>
         </div>
 
-        <span id="days-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-none tracking-tight my-2">
+        <span id="days-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
           00
         </span>
 
@@ -550,7 +550,7 @@ html
       </div>
 
       <!-- CARTÃO 2: HORAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
         <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
           <span>02</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
@@ -559,7 +559,7 @@ html
           <span>HRS</span>
         </div>
 
-        <span id="hours-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-none tracking-tight my-2">
+        <span id="hours-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
           08
         </span>
 
@@ -571,7 +571,7 @@ html
       </div>
 
       <!-- CARTÃO 3: MINUTOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
         <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
           <span>03</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
@@ -580,7 +580,7 @@ html
           <span>MIN</span>
         </div>
 
-        <span id="min-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-none tracking-tight my-2">
+        <span id="min-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
           10
         </span>
 
@@ -592,7 +592,7 @@ html
       </div>
 
       <!-- CARTÃO 4: SEGUNDOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
         <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
           <span>04</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
@@ -601,7 +601,7 @@ html
           <span>SEC</span>
         </div>
 
-        <span id="sec-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-none tracking-tight my-2">
+        <span id="sec-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
           59
         </span>
 
@@ -621,7 +621,7 @@ html
         <span id="day-progress-pct" class="text-[#f5d08a] font-bold">00.0% CONCLUÍDO</span>
       </div>
       <div class="w-full h-2.5 rounded-full bg-[#15082b] border border-[#f5d08a]/25 overflow-hidden p-0.5">
-        <div id="day-progress-bar" class="h-full rounded-full bg-gradient-to-r from-[#ff2e7e] via-[#ff75ab] to-[#f5d08a] transition-all duration-500" style="width: 66%;"></div>
+        <div id="day-progress-bar" class="h-full rounded-full bg-gradient-to-r from-[#ff2e7e] via-[#ff75ab] to-[#f5d08a] transition-all duration-300" style="width: 0%;"></div>
       </div>
     </div>
 
@@ -672,11 +672,73 @@ html
   </main>
 
   <!-- =====================================================================
-       LÓGICA JAVASCRIPT (RELÓGIO REAL ATÉ 00:00)
+       LÓGICA JAVASCRIPT (RELÓGIO REAL ATÉ 00:00 & PROGRESSO DO DIA)
   ====================================================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-// ... existing code ... -->
+      const daysEl = document.getElementById('days-val');
+      const hoursEl = document.getElementById('hours-val');
+      const minEl = document.getElementById('min-val');
+      const secEl = document.getElementById('sec-val');
+      const progressPctEl = document.getElementById('day-progress-pct');
+      const progressBarEl = document.getElementById('day-progress-bar');
+      const subtitleEl = document.getElementById('hero-subtitle');
+
+      function padZero(num) {
+        return String(Math.max(0, Math.floor(num))).padStart(2, '0');
+      }
+
+      function updateCountdown() {
+        const now = new Date();
+
+        // Início do dia atual (00:00:00.000 de hoje)
+        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+        // Meia-noite seguinte (00:00:00.000 de amanhã)
+        const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+
+        const totalDayMs = midnight.getTime() - startOfDay.getTime();
+        const elapsedMs = Math.max(0, now.getTime() - startOfDay.getTime());
+        const remainingMs = Math.max(0, midnight.getTime() - now.getTime());
+
+        // Cálculo preciso do progresso do dia (0.0% a 100.0%)
+        const pct = Math.min(100, Math.max(0, (elapsedMs / totalDayMs) * 100));
+        const pctFormatted = pct.toFixed(1);
+
+        if (progressPctEl) {
+          progressPctEl.textContent = `${pctFormatted}% CONCLUÍDO`;
+        }
+        if (progressBarEl) {
+          progressBarEl.style.width = `${pctFormatted}%`;
+        }
+
+        // Cálculo do tempo restante até às 00:00
+        const totalSeconds = Math.floor(remainingMs / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        if (daysEl) daysEl.textContent = padZero(days);
+        if (hoursEl) hoursEl.textContent = padZero(hours);
+        if (minEl) minEl.textContent = padZero(minutes);
+        if (secEl) secEl.textContent = padZero(seconds);
+
+        // Destaque dramático nos últimos 15 minutos antes da meia-noite
+        const isUrgent = totalSeconds > 0 && totalSeconds <= 900;
+        [daysEl, hoursEl, minEl, secEl].forEach((el) => {
+          if (!el) return;
+          if (isUrgent) {
+            el.classList.add('digit-urgent');
+          } else {
+            el.classList.remove('digit-urgent');
+          }
+        });
+
+        if (totalSeconds === 0 && subtitleEl) {
+          subtitleEl.textContent = 'MEIA-NOITE CHEGOU! AGORA OU NUNCA!';
+        }
+      }
+
       updateCountdown();
       setInterval(updateCountdown, 250);
     });
