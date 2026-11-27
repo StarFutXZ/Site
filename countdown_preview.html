@@ -30,13 +30,14 @@ html
       box-sizing: border-box;
     }
 
-    body {
-      font-family: var(--font-ui);
+    html, body {
       margin: 0;
       padding: 0;
+      width: 100%;
       overflow-x: hidden;
       background-color: var(--bg-void);
       color: #ffffff;
+      font-family: var(--font-ui);
       user-select: none;
     }
 
@@ -47,15 +48,15 @@ html
       font-variant-numeric: tabular-nums;
     }
 
-    /* Textura Cinematográfica Subtil (Film Grain) */
+    /* Textura Cinematográfica Subtil */
     .cinema-grain {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 45;
-      opacity: 0.038;
+      z-index: 40;
+      opacity: 0.032;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
@@ -65,34 +66,35 @@ html
         radial-gradient(ellipse 75% 50% at 50% 18%, rgba(255, 46, 126, 0.34) 0%, rgba(124, 33, 168, 0.18) 42%, transparent 75%),
         radial-gradient(circle at 18% 22%, rgba(245, 208, 138, 0.16) 0%, transparent 45%),
         radial-gradient(circle at 82% 28%, rgba(255, 46, 126, 0.2) 0%, transparent 48%),
-        linear-gradient(180deg, #0d0620 0%, #160930 48%, #0b051c 100%);
+        linear-gradient(180deg, #0d0620 0%, #160930 52%, #0d0620 100%);
     }
 
     /* Secção Inferior Profunda */
     .vault-atmosphere {
       background:
-        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 46, 126, 0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 46, 126, 0.14) 0%, transparent 70%),
         linear-gradient(180deg, #0d0620 0%, #090417 55%, #05020d 100%);
     }
 
-    /* Glassmorphism de Estúdio AAA */
+    /* Cápsula Translúcida Editorial */
     .studio-glass {
-      background: linear-gradient(155deg, rgba(28, 14, 52, 0.78) 0%, rgba(12, 6, 26, 0.92) 100%);
+      background: linear-gradient(155deg, rgba(28, 14, 52, 0.85) 0%, rgba(12, 6, 26, 0.94) 100%);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(245, 208, 138, 0.32);
+      border: 1px solid rgba(245, 208, 138, 0.38);
       box-shadow:
-        0 20px 45px -12px rgba(0, 0, 0, 0.85),
+        0 18px 40px -12px rgba(0, 0, 0, 0.85),
         inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
         0 0 28px -8px rgba(255, 46, 126, 0.28);
     }
 
+    /* Cartões de Contagem Regressiva em Vidro Fosco */
     .studio-glass-card {
       position: relative;
-      background: linear-gradient(165deg, rgba(33, 16, 61, 0.82) 0%, rgba(13, 6, 28, 0.94) 100%);
+      background: linear-gradient(165deg, rgba(33, 16, 61, 0.86) 0%, rgba(13, 6, 28, 0.96) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(245, 208, 138, 0.35);
+      border: 1.5px solid rgba(245, 208, 138, 0.36);
       box-shadow:
         0 18px 36px -10px rgba(0, 0, 0, 0.85),
         inset 0 1px 1px rgba(255, 240, 215, 0.22),
@@ -101,12 +103,12 @@ html
     }
 
     .studio-glass-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: rgba(245, 208, 138, 0.75);
+      transform: translateY(-4px);
+      border-color: rgba(245, 208, 138, 0.72);
       box-shadow:
-        0 24px 48px -10px rgba(0, 0, 0, 0.9),
-        0 0 32px rgba(255, 46, 126, 0.35),
-        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+        0 22px 44px -10px rgba(0, 0, 0, 0.9),
+        0 0 28px rgba(255, 46, 126, 0.32),
+        inset 0 1px 1px rgba(255, 255, 255, 0.28);
     }
 
     /* Dígitos Metálicos Luminosos */
@@ -114,7 +116,7 @@ html
       background: linear-gradient(180deg, #ffffff 15%, #ffd6e8 62%, #ff85b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 18px rgba(255, 46, 126, 0.65));
+      filter: drop-shadow(0 0 16px rgba(255, 46, 126, 0.55));
     }
 
     .digit-urgent {
@@ -137,12 +139,12 @@ html
 
     @keyframes floatHero {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-7px); }
+      50% { transform: translateY(-6px); }
     }
 
     @keyframes holoPulse {
-      0%, 100% { filter: drop-shadow(0 0 16px rgba(255, 46, 126, 0.7)); }
-      50% { filter: drop-shadow(0 0 30px rgba(245, 208, 138, 0.85)); }
+      0%, 100% { filter: drop-shadow(0 0 14px rgba(255, 46, 126, 0.65)); }
+      50% { filter: drop-shadow(0 0 26px rgba(245, 208, 138, 0.8)); }
     }
 
     @keyframes heartBeat {
@@ -154,7 +156,7 @@ html
 
     @keyframes urgentPulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.07); }
+      50% { transform: scale(1.06); }
     }
 
     @keyframes typingDot {
@@ -172,18 +174,6 @@ html
     .dot-1 { animation: typingDot 1.4s infinite 0s; }
     .dot-2 { animation: typingDot 1.4s infinite 0.2s; }
     .dot-3 { animation: typingDot 1.4s infinite 0.4s; }
-
-    /* Banner Hexagonal Estático Ouro-Champanhe & Rosa-Néons */
-    .deadline-hex-banner {
-      background: linear-gradient(135deg, rgba(38, 15, 64, 0.92) 0%, rgba(15, 6, 30, 0.96) 100%);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1.5px solid rgba(245, 208, 138, 0.65);
-      box-shadow:
-        0 18px 42px -10px rgba(0, 0, 0, 0.88),
-        0 0 28px -6px rgba(255, 46, 126, 0.38),
-        inset 0 1px 1px rgba(255, 245, 224, 0.35);
-    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between relative selection:bg-pink-500 selection:text-white">
@@ -194,7 +184,7 @@ html
   <!-- =====================================================================
        SECÇÃO HERO: CENÁRIO CINEMATOGRÁFICO, AGENTE WINGMAN & LOGOTIPO 3D
   ====================================================================== -->
-  <header class="relative w-full hero-atmosphere pt-6 sm:pt-10 pb-8 sm:pb-12 overflow-hidden flex flex-col items-center">
+  <header class="relative w-full hero-atmosphere pt-6 sm:pt-10 pb-8 sm:pb-10 flex flex-col items-center">
 
     <!-- Fundo Vetorial: Céu Estrelado, Lua Dourada, Feixes Volumétricos & Skyline -->
     <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
@@ -252,7 +242,7 @@ html
       <path d="M0,680 L0,520 L95,520 L95,465 L175,465 L175,530 L260,530 L260,445 L345,445 L345,515 L1095,515 L1095,450 L1185,450 L1185,505 L1275,505 L1275,440 L1360,440 L1360,515 L1440,515 L1440,680 Z"
             fill="url(#skylineNear)"/>
 
-      <!-- Luzes das Janelas (Ouro Champanhe & Rosa) -->
+      <!-- Luzes das Janelas -->
       <g opacity="0.55">
         <rect x="115" y="485" width="7" height="12" rx="1.5" fill="#f5d08a"/>
         <rect x="132" y="485" width="7" height="12" rx="1.5" fill="#ff75ab"/>
@@ -265,36 +255,31 @@ html
       </g>
     </svg>
 
-    <!-- Personagem Central (Agente Wingman / Cupido Noturno com Rim Lighting) -->
-    <div class="relative z-10 w-full max-w-[660px] px-2 flex justify-center">
-      <svg class="w-full h-auto max-h-[340px] sm:max-h-[450px] drop-shadow-[0_22px_38px_rgba(0,0,0,0.85)]" viewBox="0 0 760 610" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Personagem Central (Agente Wingman / Cupido Noturno) -->
+    <div class="relative z-10 w-full max-w-[640px] px-2 flex justify-center">
+      <svg class="w-full h-auto max-h-[320px] sm:max-h-[430px] drop-shadow-[0_22px_38px_rgba(0,0,0,0.85)]" viewBox="0 0 760 610" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Ouro Champanhe Metálico -->
           <linearGradient id="champagneGold" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#fff6e0"/>
             <stop offset="35%" stop-color="#f5d08a"/>
             <stop offset="72%" stop-color="#c98a42"/>
             <stop offset="100%" stop-color="#ffe7ba"/>
           </linearGradient>
-          <!-- Fato Velvet Escuro com Rim Light -->
           <linearGradient id="velvetSuit" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#2b144d"/>
             <stop offset="55%" stop-color="#150829"/>
             <stop offset="100%" stop-color="#090314"/>
           </linearGradient>
-          <!-- Camisa Seda -->
           <linearGradient id="silkShirt" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#ffffff"/>
             <stop offset="100%" stop-color="#dfd0e8"/>
           </linearGradient>
-          <!-- Ecrã Holográfico Magenta -->
           <linearGradient id="holoScreen" x1="50%" y1="0%" x2="50%" y2="100%">
             <stop offset="0%" stop-color="#ff85b8"/>
             <stop offset="38%" stop-color="#ff2e7e"/>
             <stop offset="82%" stop-color="#7a1149"/>
             <stop offset="100%" stop-color="#1f0524"/>
           </linearGradient>
-          <!-- Rim Light Neon -->
           <linearGradient id="rimNeon" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#ff2e7e"/>
             <stop offset="50%" stop-color="#f5d08a"/>
@@ -308,16 +293,14 @@ html
 
         <!-- ================= CORPO DO AGENTE WINGMAN ================= -->
         <g id="wingman-agent">
-          <!-- Braço Direito (A segurar o Smartphone Holográfico) -->
+          <!-- Braço Direito -->
           <g transform="rotate(13 235 190)">
             <rect x="135" y="105" width="170" height="220" rx="20" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5"/>
-            <!-- Rim Light Rosa na Borda Exterior -->
             <path d="M138 125 L138 305" stroke="#ff2e7e" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
           </g>
 
           <!-- Tronco (Smoking Moderno) -->
           <path d="M295 192 L615 168 L658 430 L275 445 Z" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5" stroke-linejoin="round"/>
-          <!-- Rim Light Dourado no Ombro -->
           <path d="M298 193 L612 169" stroke="#f5d08a" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
 
           <!-- Camisa Seda & Lapelas -->
@@ -393,7 +376,7 @@ html
           <text x="40" y="-17" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="16" fill="#ffffff">1</text>
         </g>
 
-        <!-- ================= ARTEFACTO SMARTPHONE HOLOGRÁFICO ================= -->
+        <!-- ================= ARTEFACTO SMARTPHONE HOLOGRÁFICO (SEM TEXTO INFERIOR SOBREPOSTO) ================= -->
         <g id="holo-phone" class="animate-holo" transform="translate(185, 282) rotate(13)">
           <!-- Moldura Obsidiana & Ouro Champanhe -->
           <rect x="-76" y="-114" width="152" height="378" rx="28" fill="#0e051f" stroke="#070210" stroke-width="5"/>
@@ -421,9 +404,8 @@ html
           <!-- Coração Holográfico Central -->
           <path d="M0 58 C-26 38 -36 19 -20 9 C-10 3 -3 9 0 16 C3 9 10 3 20 9 C36 19 26 38 0 58 Z" fill="#fff0f6" opacity="0.92"/>
 
-          <!-- Botão "ENVIAR DM" no Ecrã -->
-          <rect x="-42" y="182" width="84" height="28" rx="14" fill="#ffffff" stroke="#f5d08a" stroke-width="2.5"/>
-          <text x="0" y="200" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="12.5" letter-spacing="0.5" fill="#9e0b48">ENVIAR DM</text>
+          <!-- Indicador Visual Minimalista no Fundo do Ecrã (sem texto sobreposto) -->
+          <rect x="-32" y="188" width="64" height="8" rx="4" fill="#ffffff" opacity="0.45"/>
 
           <!-- Asas Ouro-Champanhe Laterais -->
           <path d="M-150 -150 Q-140 -88 -76 -80 L-71 -60 Q-116 -54 -136 -102 Q-144 -124 -150 -150 Z"
@@ -442,7 +424,7 @@ html
     </div>
 
     <!-- ================= LOGOTIPO 3D METÁLICO "OPERAÇÃO MANDA DM" ================= -->
-    <div class="relative z-20 -mt-20 sm:-mt-32 w-full max-w-[490px] sm:max-w-[580px] px-4 flex flex-col items-center animate-hero-float">
+    <div class="relative z-20 -mt-14 sm:-mt-28 w-full max-w-[490px] sm:max-w-[580px] px-4 flex flex-col items-center animate-hero-float">
       <div class="relative w-full overflow-hidden rounded-3xl">
         <svg class="w-full h-auto drop-shadow-[0_18px_32px_rgba(0,0,0,0.92)]" viewBox="0 0 660 285" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -507,7 +489,7 @@ html
       </div>
 
       <!-- Cápsula Translúcida Editorial -->
-      <div class="studio-glass mt-1 sm:-mt-2 px-4 sm:px-6 py-2 rounded-full flex items-center gap-2.5 border border-[#f5d08a]/50 shadow-xl">
+      <div class="studio-glass mt-2 px-4 sm:px-6 py-2.5 rounded-full flex items-center gap-2.5 border border-[#f5d08a]/50 shadow-xl">
         <span class="text-sm sm:text-base">⏳</span>
         <h1 id="hero-subtitle" class="font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.14em] uppercase text-[#fff3d6] text-center">
           O TEMPO ESTÁ A ACABAR, SOLDADO!
@@ -522,23 +504,22 @@ html
   <!-- =====================================================================
        SECÇÃO INFERIOR: RELÓGIO DE PRECISÃO, BARRA DA NOITE & BANNER DE PRAZO
   ====================================================================== -->
-  <main class="relative z-10 flex-1 w-full vault-atmosphere pt-8 sm:pt-10 pb-12 sm:pb-16 px-4 flex flex-col items-center justify-start overflow-x-clip">
+  <main class="relative z-10 flex-1 w-full vault-atmosphere pt-6 sm:pt-10 pb-12 sm:pb-16 px-4 flex flex-col items-center justify-start">
 
     <!-- ================= 4 CARTÕES DE LUXO (DIAS, HORAS, MIN, SEG) ================= -->
     <section aria-label="Contagem Regressiva até à Meia-Noite" class="relative z-20 w-full max-w-[780px] grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5 mb-6 sm:mb-8">
 
       <!-- CARTÃO 1: DIAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
-        <!-- Ornamento Superior com Coração de Rubi -->
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
           <span>01</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
-          <span>SYS</span>
+          <span>DAYS</span>
         </div>
 
-        <span id="days-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
+        <span id="days-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
           00
         </span>
 
@@ -550,8 +531,8 @@ html
       </div>
 
       <!-- CARTÃO 2: HORAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
           <span>02</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -559,8 +540,8 @@ html
           <span>HRS</span>
         </div>
 
-        <span id="hours-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
-          08
+        <span id="hours-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
+          07
         </span>
 
         <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
@@ -571,8 +552,8 @@ html
       </div>
 
       <!-- CARTÃO 3: MINUTOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
           <span>03</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -580,8 +561,8 @@ html
           <span>MIN</span>
         </div>
 
-        <span id="min-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
-          10
+        <span id="min-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
+          46
         </span>
 
         <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
@@ -592,8 +573,8 @@ html
       </div>
 
       <!-- CARTÃO 4: SEGUNDOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between overflow-visible">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/60 text-[10px] font-mono-num mb-2">
+      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
+        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
           <span>04</span>
           <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -601,7 +582,7 @@ html
           <span>SEC</span>
         </div>
 
-        <span id="sec-val" class="font-mono-num digit-glow text-5xl sm:text-[56px] font-extrabold leading-[1.15] tracking-tight my-1.5 py-0.5">
+        <span id="sec-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
           59
         </span>
 
@@ -675,7 +656,7 @@ html
        LÓGICA JAVASCRIPT (RELÓGIO REAL ATÉ 00:00 & PROGRESSO DO DIA)
   ====================================================================== -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    (function () {
       const daysEl = document.getElementById('days-val');
       const hoursEl = document.getElementById('hours-val');
       const minEl = document.getElementById('min-val');
@@ -693,10 +674,11 @@ html
 
         // Início do dia atual (00:00:00.000 de hoje)
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
-        // Meia-noite seguinte (00:00:00.000 de amanhã)
+        // Fim do dia atual (23:59:59.999) / Próxima meia-noite (00:00:00.000 de amanhã)
+        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
         const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
 
-        const totalDayMs = midnight.getTime() - startOfDay.getTime();
+        const totalDayMs = endOfDay.getTime() - startOfDay.getTime();
         const elapsedMs = Math.max(0, now.getTime() - startOfDay.getTime());
         const remainingMs = Math.max(0, midnight.getTime() - now.getTime());
 
@@ -705,10 +687,10 @@ html
         const pctFormatted = pct.toFixed(1);
 
         if (progressPctEl) {
-          progressPctEl.textContent = `${pctFormatted}% CONCLUÍDO`;
+          progressPctEl.textContent = pctFormatted + '% CONCLUÍDO';
         }
         if (progressBarEl) {
-          progressBarEl.style.width = `${pctFormatted}%`;
+          progressBarEl.style.width = pctFormatted + '%';
         }
 
         // Cálculo do tempo restante até às 00:00
@@ -723,9 +705,9 @@ html
         if (minEl) minEl.textContent = padZero(minutes);
         if (secEl) secEl.textContent = padZero(seconds);
 
-        // Destaque dramático nos últimos 15 minutos antes da meia-noite
+        // Modo alerta vermelho nos últimos 15 minutos antes da meia-noite
         const isUrgent = totalSeconds > 0 && totalSeconds <= 900;
-        [daysEl, hoursEl, minEl, secEl].forEach((el) => {
+        [daysEl, hoursEl, minEl, secEl].forEach(function (el) {
           if (!el) return;
           if (isUrgent) {
             el.classList.add('digit-urgent');
@@ -735,13 +717,13 @@ html
         });
 
         if (totalSeconds === 0 && subtitleEl) {
-          subtitleEl.textContent = 'MEIA-NOITE CHEGOU! AGORA OU NUNCA!';
+          subtitleEl.textContent = 'TEMPO ESGOTADO! MANDA AGORA!';
         }
       }
 
       updateCountdown();
-      setInterval(updateCountdown, 250);
-    });
+      setInterval(updateCountdown, 1000);
+    })();
   </script>
 </body>
 </html>
