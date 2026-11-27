@@ -1,729 +1,205 @@
-html
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OPERAÇÃO: MANDA DM • Prazo Meia-Noite (00:00)</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Plus Jakarta Sans, Outfit, Lilita One & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700;800&family=Lilita+One&family=Outfit:wght@700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Operação Manda DM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=JetBrains+Mono:wght@500;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg1: #1a0a2e;
+    --bg2: #0b0616;
+    --pink: #ff3d8b;
+    --pink2: #ff8fb8;
+    --gold: #f2c26b;
+    --ink: #fff3f8;
+    --soft: #b79ac9;
+    --card: #22103a;
+    --line: #5a3d52;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    min-height: 100vh;
+    color: var(--ink);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    background:
+      conic-gradient(from 200deg at 50% -10%, transparent 0 8%, rgba(255,61,139,.18) 12%, transparent 16% 84%, rgba(255,61,139,.18) 88%, transparent 92%),
+      linear-gradient(180deg, #4a1a4f 0%, var(--bg1) 38%, var(--bg2) 100%);
+    background-attachment: fixed;
+    padding: env(safe-area-inset-top, 0) 18px env(safe-area-inset-bottom, 0);
+    overflow-x: hidden;
+  }
+  main { max-width: 480px; margin: 0 auto; padding: 18px 0 40px; text-align: center; }
 
-  <style>
-    :root {
-      --bg-void: #070412;
-      --bg-velvet: #120826;
-      --gold-champagne: #f5d08a;
-      --gold-warm: #e5a95c;
-      --neon-crimson: #ff2e7e;
-      --neon-rose: #ff75ab;
-      --font-display: 'Outfit', sans-serif;
-      --font-emblem: 'Lilita One', cursive, sans-serif;
-      --font-ui: 'Plus Jakarta Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
+  .hero svg { width: 100%; max-width: 360px; height: auto; display: block; margin: 0 auto; filter: drop-shadow(0 10px 24px rgba(0,0,0,.5)); }
+  h1 { font-family: "Lilita One", Impact, sans-serif; font-weight: 400; line-height: .92; margin-top: -42px; position: relative; }
+  h1 span {
+    display: block;
+    background: linear-gradient(180deg, #ff6aa6, #e0136f);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    -webkit-text-stroke: 3px var(--gold); paint-order: stroke fill;
+    filter: drop-shadow(0 4px 0 rgba(0,0,0,.35));
+  }
+  h1 .a { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+  h1 .b { font-size: clamp(3.4rem, 18vw, 5rem); }
 
-    * {
-      box-sizing: border-box;
-    }
+  .banner {
+    margin: 26px 0 22px; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: 99px;
+    background: rgba(20,10,40,.7);
+    font-weight: 800; font-size: .88rem; letter-spacing: .06em;
+  }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      overflow-x: hidden;
-      background-color: var(--bg-void);
-      color: #ffffff;
-      font-family: var(--font-ui);
-      user-select: none;
-    }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .tile {
+    background: linear-gradient(180deg, #2d1550, var(--card));
+    border: 1.5px solid var(--line); border-radius: 22px;
+    padding: 14px 6px 12px;
+  }
+  .num {
+    font-weight: 800; font-size: clamp(2.2rem, 12vw, 3.2rem); line-height: 1;
+    background: linear-gradient(180deg, #fff, var(--pink2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-variant-numeric: tabular-nums;
+  }
+  .lab { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--gold); font-weight: 800; font-size: .72rem; letter-spacing: .16em; }
 
-    .font-display { font-family: var(--font-display); }
-    .font-emblem { font-family: var(--font-emblem); }
-    .font-mono-num {
-      font-family: var(--font-mono);
-      font-variant-numeric: tabular-nums;
-    }
+  .prog { margin-top: 28px; text-align: left; font-size: .8rem; color: var(--soft); }
+  .prog .row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .prog .row b { color: var(--gold); }
+  .bar { height: 12px; border-radius: 99px; background: #2b1745; border: 1px solid var(--line); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 99px; background: linear-gradient(90deg, var(--pink), var(--gold)); transition: width .8s linear; }
 
-    /* Textura Cinematográfica Subtil */
-    .cinema-grain {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 40;
-      opacity: 0.032;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
+  button {
+    margin-top: 30px; width: 100%; cursor: pointer;
+    font: 800 1rem "JetBrains Mono", monospace; letter-spacing: .04em;
+    color: #2a0a1c; background: linear-gradient(180deg, #ffd98a, var(--gold));
+    border: 0; border-radius: 99px; padding: 17px 20px;
+    box-shadow: 0 6px 0 #a67b2e;
+  }
+  button:active { transform: translateY(3px); box-shadow: 0 3px 0 #a67b2e; }
+  button:focus-visible { outline: 3px solid var(--pink2); outline-offset: 3px; }
 
-    /* Fundo Atmosférico Hero (Velvet Midnight & Luzes Volumétricas) */
-    .hero-atmosphere {
-      background:
-        radial-gradient(ellipse 75% 50% at 50% 18%, rgba(255, 46, 126, 0.34) 0%, rgba(124, 33, 168, 0.18) 42%, transparent 75%),
-        radial-gradient(circle at 18% 22%, rgba(245, 208, 138, 0.16) 0%, transparent 45%),
-        radial-gradient(circle at 82% 28%, rgba(255, 46, 126, 0.2) 0%, transparent 48%),
-        linear-gradient(180deg, #0d0620 0%, #160930 52%, #0d0620 100%);
-    }
+  body.urgent .banner { border-color: var(--pink); color: var(--gold); }
+  body.urgent .tile { border-color: var(--pink); animation: glow 1.2s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow: 0 0 22px rgba(255,61,139,.55); } }
+  body.done .tile { border-color: var(--gold); animation: none; }
 
-    /* Secção Inferior Profunda */
-    .vault-atmosphere {
-      background:
-        radial-gradient(ellipse 80% 55% at 50% 0%, rgba(255, 46, 126, 0.14) 0%, transparent 70%),
-        linear-gradient(180deg, #0d0620 0%, #090417 55%, #05020d 100%);
-    }
-
-    /* Cápsula Translúcida Editorial */
-    .studio-glass {
-      background: linear-gradient(155deg, rgba(28, 14, 52, 0.85) 0%, rgba(12, 6, 26, 0.94) 100%);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(245, 208, 138, 0.38);
-      box-shadow:
-        0 18px 40px -12px rgba(0, 0, 0, 0.85),
-        inset 0 1px 0 0 rgba(255, 255, 255, 0.16),
-        0 0 28px -8px rgba(255, 46, 126, 0.28);
-    }
-
-    /* Cartões de Contagem Regressiva em Vidro Fosco */
-    .studio-glass-card {
-      position: relative;
-      background: linear-gradient(165deg, rgba(33, 16, 61, 0.86) 0%, rgba(13, 6, 28, 0.96) 100%);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1.5px solid rgba(245, 208, 138, 0.36);
-      box-shadow:
-        0 18px 36px -10px rgba(0, 0, 0, 0.85),
-        inset 0 1px 1px rgba(255, 240, 215, 0.22),
-        inset 0 -12px 24px rgba(255, 46, 126, 0.08);
-      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .studio-glass-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(245, 208, 138, 0.72);
-      box-shadow:
-        0 22px 44px -10px rgba(0, 0, 0, 0.9),
-        0 0 28px rgba(255, 46, 126, 0.32),
-        inset 0 1px 1px rgba(255, 255, 255, 0.28);
-    }
-
-    /* Dígitos Metálicos Luminosos */
-    .digit-glow {
-      background: linear-gradient(180deg, #ffffff 15%, #ffd6e8 62%, #ff85b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 16px rgba(255, 46, 126, 0.55));
-    }
-
-    .digit-urgent {
-      background: linear-gradient(180deg, #fff0f3 10%, #ff4d6d 55%, #c9184a 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      filter: drop-shadow(0 0 22px rgba(255, 23, 68, 0.95)) !important;
-      animation: urgentPulse 0.8s ease-in-out infinite;
-    }
-
-    /* Brilho Especular Animado no Logotipo */
-    @keyframes specularSweep {
-      0% { transform: translateX(-140%) skewX(-22deg); }
-      45%, 100% { transform: translateX(240%) skewX(-22deg); }
-    }
-
-    .logo-sheen {
-      animation: specularSweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-
-    @keyframes floatHero {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-    }
-
-    @keyframes holoPulse {
-      0%, 100% { filter: drop-shadow(0 0 14px rgba(255, 46, 126, 0.65)); }
-      50% { filter: drop-shadow(0 0 26px rgba(245, 208, 138, 0.8)); }
-    }
-
-    @keyframes heartBeat {
-      0%, 100% { transform: scale(1); }
-      18% { transform: scale(1.24); }
-      36% { transform: scale(1.04); }
-      54% { transform: scale(1.18); }
-    }
-
-    @keyframes urgentPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-    }
-
-    @keyframes typingDot {
-      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
-      30% { transform: translateY(-3px); opacity: 1; }
-    }
-
-    .animate-hero-float { animation: floatHero 4.8s ease-in-out infinite; }
-    .animate-holo { animation: holoPulse 3.4s ease-in-out infinite; }
-    .animate-heartbeat {
-      animation: heartBeat 1s ease-in-out infinite;
-      transform-origin: center;
-      transform-box: fill-box;
-    }
-    .dot-1 { animation: typingDot 1.4s infinite 0s; }
-    .dot-2 { animation: typingDot 1.4s infinite 0.2s; }
-    .dot-3 { animation: typingDot 1.4s infinite 0.4s; }
-  </style>
+  .heart { position: fixed; bottom: -30px; font-size: 26px; pointer-events: none; animation: up 2.4s ease-out forwards; }
+  @keyframes up { to { transform: translateY(-110vh) rotate(20deg); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { body.urgent .tile, .heart { animation: none; } }
+</style>
 </head>
-<body class="min-h-screen flex flex-col justify-between relative selection:bg-pink-500 selection:text-white">
-
-  <!-- Textura Subtil de Cinema -->
-  <div class="cinema-grain"></div>
-
-  <!-- =====================================================================
-       SECÇÃO HERO: CENÁRIO CINEMATOGRÁFICO, AGENTE WINGMAN & LOGOTIPO 3D
-  ====================================================================== -->
-  <header class="relative w-full hero-atmosphere pt-6 sm:pt-10 pb-8 sm:pb-10 flex flex-col items-center">
-
-    <!-- Fundo Vetorial: Céu Estrelado, Lua Dourada, Feixes Volumétricos & Skyline -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+<body>
+<main>
+  <div class="hero">
+    <svg viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Agente secreto com telemóvel">
       <defs>
-        <radialGradient id="champagneMoonHalo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#fff6e5" stop-opacity="0.95"/>
-          <stop offset="30%" stop-color="#f5d08a" stop-opacity="0.32"/>
-          <stop offset="70%" stop-color="#ff2e7e" stop-opacity="0.12"/>
-          <stop offset="100%" stop-color="#0d0620" stop-opacity="0"/>
-        </radialGradient>
-        <linearGradient id="volumetricRay" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stop-color="#f5d08a" stop-opacity="0.22"/>
-          <stop offset="55%" stop-color="#ff2e7e" stop-opacity="0.08"/>
-          <stop offset="100%" stop-color="#0d0620" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="skylineFar" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#1d0d3d" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#0b051c" stop-opacity="0.95"/>
-        </linearGradient>
-        <linearGradient id="skylineNear" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#120729" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#070412" stop-opacity="1"/>
-        </linearGradient>
+        <linearGradient id="scr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff8fb8"/><stop offset="1" stop-color="#e0136f"/></linearGradient>
       </defs>
-
-      <!-- Feixes Volumétricos -->
-      <polygon points="620,0 820,0 1160,680 280,680" fill="url(#volumetricRay)"/>
-      <polygon points="400,0 490,0 240,620 40,620" fill="url(#volumetricRay)" opacity="0.5"/>
-      <polygon points="950,0 1040,0 1400,620 1200,620" fill="url(#volumetricRay)" opacity="0.5"/>
-
-      <!-- Estrelas de Precisão -->
-      <g fill="#fff8eb">
-        <circle cx="140" cy="85" r="2" opacity="0.8"/><circle cx="240" cy="150" r="1.4" opacity="0.5"/>
-        <circle cx="350" cy="65" r="2.4" opacity="0.9"/><circle cx="510" cy="105" r="1.5" opacity="0.6"/>
-        <circle cx="930" cy="75" r="2.2" opacity="0.85"/><circle cx="1070" cy="145" r="1.6" opacity="0.6"/>
-        <circle cx="1210" cy="82" r="2.5" opacity="0.9"/><circle cx="1320" cy="175" r="1.8" opacity="0.7"/>
-        <circle cx="185" cy="260" r="1.6" opacity="0.5"/><circle cx="1265" cy="265" r="2" opacity="0.6"/>
+      <!-- fato -->
+      <path d="M95 250V175l65-24 65 24v75z" fill="#150a28" stroke="#f2c26b" stroke-width="1.5"/>
+      <path d="M140 160h40l-20 58z" fill="#fff6ee"/>
+      <path d="M160 176l-18-9v18zM160 176l18-9v18z" fill="#ff3d8b"/>
+      <rect x="153" y="171" width="14" height="10" rx="3" fill="#f2c26b"/>
+      <!-- cabeça -->
+      <ellipse cx="160" cy="118" rx="36" ry="34" fill="#2a1740" stroke="#150a28" stroke-width="2"/>
+      <ellipse cx="146" cy="108" rx="9" ry="6" fill="#ffd23f"/><ellipse cx="174" cy="108" rx="9" ry="6" fill="#ffd23f"/>
+      <circle cx="146" cy="108" r="2.5" fill="#150a28"/><circle cx="174" cy="108" r="2.5" fill="#150a28"/>
+      <path d="M135 128q25 22 50 0v14q-25 14-50 0z" fill="#150a28"/>
+      <!-- chapéu -->
+      <path d="M126 88v-34q0-10 12-10h44q12 0 12 10v34z" fill="#2a1740" stroke="#150a28" stroke-width="2"/>
+      <rect x="126" y="72" width="68" height="9" fill="#f2c26b"/>
+      <ellipse cx="160" cy="90" rx="68" ry="13" fill="#2a1740" stroke="#f2c26b" stroke-width="2"/>
+      <!-- telemóvel -->
+      <g transform="rotate(-12 70 130)">
+        <rect x="36" y="64" width="68" height="124" rx="14" fill="#150a28" stroke="#f2c26b" stroke-width="3"/>
+        <rect x="44" y="76" width="52" height="100" rx="8" fill="url(#scr)"/>
+        <rect x="50" y="86" width="26" height="9" rx="4.5" fill="#fff" opacity=".9"/>
+        <rect x="58" y="102" width="32" height="9" rx="4.5" fill="#fff" opacity=".7"/>
+        <path d="M70 160c-16-10-18-22-10-27 5-3 8 0 10 3 2-3 5-6 10-3 8 5 6 17-10 27z" fill="#fff"/>
       </g>
-
-      <!-- Estrela Cadente Elegante -->
-      <line x1="1150" y1="95" x2="1010" y2="155" stroke="url(#champagneMoonHalo)" stroke-width="2" stroke-linecap="round"/>
-      <circle cx="1150" cy="95" r="2.5" fill="#fff6e5"/>
-
-      <!-- Lua Crescente Champanhe -->
-      <g transform="translate(245, 130)">
-        <circle cx="0" cy="0" r="115" fill="url(#champagneMoonHalo)"/>
-        <path d="M-10 -36 A38 38 0 1 0 32 20 A30 30 0 1 1 -10 -36 Z" fill="#fff3d6"/>
-      </g>
-
-      <!-- Horizonte Urbano (Camada Distante) -->
-      <path d="M0,660 L0,470 L70,470 L70,420 L145,420 L145,485 L220,485 L220,390 L300,390 L300,450 L390,450 L390,375 L475,375 L475,460 L965,460 L965,385 L1050,385 L1050,440 L1135,440 L1135,365 L1220,365 L1220,435 L1310,435 L1310,400 L1385,400 L1385,465 L1440,465 L1440,660 Z"
-            fill="url(#skylineFar)"/>
-
-      <!-- Horizonte Urbano (Camada Próxima com Luzes) -->
-      <path d="M0,680 L0,520 L95,520 L95,465 L175,465 L175,530 L260,530 L260,445 L345,445 L345,515 L1095,515 L1095,450 L1185,450 L1185,505 L1275,505 L1275,440 L1360,440 L1360,515 L1440,515 L1440,680 Z"
-            fill="url(#skylineNear)"/>
-
-      <!-- Luzes das Janelas -->
-      <g opacity="0.55">
-        <rect x="115" y="485" width="7" height="12" rx="1.5" fill="#f5d08a"/>
-        <rect x="132" y="485" width="7" height="12" rx="1.5" fill="#ff75ab"/>
-        <rect x="280" y="468" width="8" height="14" rx="1.5" fill="#f5d08a"/>
-        <rect x="298" y="468" width="8" height="14" rx="1.5" fill="#f5d08a"/>
-        <rect x="280" y="492" width="8" height="14" rx="1.5" fill="#ff75ab"/>
-        <rect x="1115" y="472" width="8" height="14" rx="1.5" fill="#f5d08a"/>
-        <rect x="1295" y="462" width="8" height="14" rx="1.5" fill="#ff75ab"/>
-        <rect x="1315" y="462" width="8" height="14" rx="1.5" fill="#f5d08a"/>
-      </g>
+      <!-- chifres -->
+      <path d="M30 70q4 40 36 52" fill="none" stroke="#f2c26b" stroke-width="5" stroke-linecap="round"/>
+      <path d="M118 126q34-4 52-30" fill="none" stroke="#f2c26b" stroke-width="4" stroke-linecap="round" opacity="0"/>
     </svg>
+    <h1><span class="a">OPERAÇÃO</span><span class="b">MANDA DM</span></h1>
+  </div>
 
-    <!-- Personagem Central (Agente Wingman / Cupido Noturno) -->
-    <div class="relative z-10 w-full max-w-[640px] px-2 flex justify-center">
-      <svg class="w-full h-auto max-h-[320px] sm:max-h-[430px] drop-shadow-[0_22px_38px_rgba(0,0,0,0.85)]" viewBox="0 0 760 610" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="champagneGold" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#fff6e0"/>
-            <stop offset="35%" stop-color="#f5d08a"/>
-            <stop offset="72%" stop-color="#c98a42"/>
-            <stop offset="100%" stop-color="#ffe7ba"/>
-          </linearGradient>
-          <linearGradient id="velvetSuit" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#2b144d"/>
-            <stop offset="55%" stop-color="#150829"/>
-            <stop offset="100%" stop-color="#090314"/>
-          </linearGradient>
-          <linearGradient id="silkShirt" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="100%" stop-color="#dfd0e8"/>
-          </linearGradient>
-          <linearGradient id="holoScreen" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stop-color="#ff85b8"/>
-            <stop offset="38%" stop-color="#ff2e7e"/>
-            <stop offset="82%" stop-color="#7a1149"/>
-            <stop offset="100%" stop-color="#1f0524"/>
-          </linearGradient>
-          <linearGradient id="rimNeon" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#ff2e7e"/>
-            <stop offset="50%" stop-color="#f5d08a"/>
-            <stop offset="100%" stop-color="#ff2e7e"/>
-          </linearGradient>
-        </defs>
+  <p class="banner" id="banner">⏳ O TEMPO ESTÁ A ACABAR, SOLDADO!</p>
 
-        <!-- Aura Circular Suave Atrás do Agente -->
-        <circle cx="475" cy="220" r="195" fill="none" stroke="url(#rimNeon)" stroke-width="1.5" stroke-dasharray="6 8" opacity="0.35"/>
-        <circle cx="475" cy="220" r="155" fill="#ff2e7e" opacity="0.08"/>
+  <section class="tiles" aria-label="Tempo restante">
+    <div class="tile"><div class="num" id="h">00</div><div class="lab">HORAS</div></div>
+    <div class="tile"><div class="num" id="m">00</div><div class="lab">MINUTOS</div></div>
+    <div class="tile"><div class="num" id="s">00</div><div class="lab">SEGUNDOS</div></div>
+  </section>
 
-        <!-- ================= CORPO DO AGENTE WINGMAN ================= -->
-        <g id="wingman-agent">
-          <!-- Braço Direito -->
-          <g transform="rotate(13 235 190)">
-            <rect x="135" y="105" width="170" height="220" rx="20" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5"/>
-            <path d="M138 125 L138 305" stroke="#ff2e7e" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
-          </g>
+  <section class="prog">
+    <div class="row"><span>PROGRESSO DO DIA</span><b id="pct">0.0% CONCLUÍDO</b></div>
+    <div class="bar"><i id="fill"></i></div>
+  </section>
 
-          <!-- Tronco (Smoking Moderno) -->
-          <path d="M295 192 L615 168 L658 430 L275 445 Z" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5" stroke-linejoin="round"/>
-          <path d="M298 193 L612 169" stroke="#f5d08a" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+  <button id="btn" type="button">💌 Já mandei a mensagem</button>
+</main>
 
-          <!-- Camisa Seda & Lapelas -->
-          <polygon points="405,188 468,312 535,180" fill="url(#silkShirt)" stroke="#070210" stroke-width="3.5"/>
-          <polygon points="405,188 374,262 445,322 468,312" fill="#210d3d" stroke="#070210" stroke-width="3.5"/>
-          <polygon points="535,180 566,258 490,322 468,312" fill="#210d3d" stroke="#070210" stroke-width="3.5"/>
+<script>
+  const $ = id => document.getElementById(id);
+  const pad = n => String(n).padStart(2, '0');
+  let feito = false;
 
-          <!-- Gravata-Borboleta Carmesim & Ouro -->
-          <g transform="translate(468, 220) rotate(-4)">
-            <polygon points="-32,-15 -6,-4 -6,8 -30,17" fill="#ff2e7e" stroke="#070210" stroke-width="3.5" stroke-linejoin="round"/>
-            <polygon points="32,-15 6,-4 6,8 30,17" fill="#b81456" stroke="#070210" stroke-width="3.5" stroke-linejoin="round"/>
-            <rect x="-8" y="-8" width="16" height="18" rx="5" fill="#f5d08a" stroke="#070210" stroke-width="3.5"/>
-          </g>
+  function mensagem(s) {
+    if (s <= 0) return '💔 TEMPO ESGOTADO, SOLDADO!';
+    if (s <= 600) return '🚨 ÚLTIMOS MINUTOS! MANDA JÁ!';
+    if (s <= 3600) return '🔥 MENOS DE UMA HORA, SOLDADO!';
+    if (s <= 4 * 3600) return '⏳ O TEMPO ESTÁ A ACABAR, SOLDADO!';
+    return '🎯 A MISSÃO ACABA HOJE À MEIA-NOITE';
+  }
 
-          <!-- Rosa de Lapela Estilizada -->
-          <g transform="translate(534, 245) rotate(14)">
-            <path d="M0 0 L-5 19" stroke="#38b000" stroke-width="3.5" stroke-linecap="round"/>
-            <circle cx="0" cy="-4" r="10.5" fill="#ff2e7e" stroke="#070210" stroke-width="3"/>
-            <circle cx="-2" cy="-6" r="4.5" fill="#ff9ec6"/>
-          </g>
+  function tick() {
+    if (feito) return;
+    const agora = new Date();
+    const fim = new Date(agora); fim.setHours(24, 0, 0, 0);
+    const ini = new Date(agora); ini.setHours(0, 0, 0, 0);
+    const s = Math.max(0, Math.floor((fim - agora) / 1000));
 
-          <!-- Base do Fato -->
-          <path d="M265 408 Q465 380 665 418 L695 570 L225 570 Z" fill="#0b0417" stroke="#05010a" stroke-width="4.5"/>
+    $('h').textContent = pad(Math.floor(s / 3600));
+    $('m').textContent = pad(Math.floor((s % 3600) / 60));
+    $('s').textContent = pad(s % 60);
 
-          <!-- Braço Esquerdo Frontal -->
-          <g transform="rotate(-17 655 255)">
-            <rect x="595" y="182" width="142" height="230" rx="18" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5"/>
-            <path d="M734 195 L734 395" stroke="#f5d08a" stroke-width="3" stroke-linecap="round" opacity="0.65"/>
-            <rect x="595" y="348" width="142" height="82" rx="12" fill="url(#silkShirt)" stroke="#070210" stroke-width="4.5"/>
-            <circle cx="628" cy="388" r="7.5" fill="url(#champagneGold)" stroke="#070210" stroke-width="2.5"/>
-          </g>
+    const p = ((agora - ini) / (fim - ini)) * 100;
+    $('fill').style.width = p.toFixed(2) + '%';
+    $('pct').textContent = p.toFixed(1) + '% CONCLUÍDO';
+    $('banner').textContent = mensagem(s);
+    document.body.classList.toggle('urgent', s <= 3600 && s > 0);
+  }
 
-          <!-- ================= CABEÇA, ÓCULOS NEON & FEDORA ================= -->
-          <g transform="translate(485, 128) rotate(-5)">
-            <rect x="-76" y="-64" width="152" height="142" rx="34" fill="#f3d4c2" stroke="#070210" stroke-width="4.5"/>
-            <!-- Barba / Cabelo Estilizado -->
-            <path d="M-74 18 Q-82 54 -50 70 L-35 60 L-20 80 L0 66 L20 80 L35 60 L50 70 Q82 54 74 18 Q44 33 0 25 Q-44 33 -74 18 Z"
-                  fill="#23103b" stroke="#070210" stroke-width="4" stroke-linejoin="round"/>
-            <!-- Sorriso Confiante -->
-            <path d="M-22 22 Q2 35 26 18" stroke="#070210" stroke-width="4" stroke-linecap="round" fill="none"/>
+  function coracoes() {
+    for (let i = 0; i < 18; i++) {
+      const el = document.createElement('div');
+      el.className = 'heart';
+      el.textContent = ['💖', '💘', '💌', '💗'][i % 4];
+      el.style.left = Math.random() * 95 + 'vw';
+      el.style.animationDelay = Math.random() * 0.8 + 's';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }
+  }
 
-            <!-- Óculos Aviador / Redondos com Armação Champanhe -->
-            <line x1="-80" y1="-15" x2="80" y2="-15" stroke="#f5d08a" stroke-width="6.5"/>
-            <circle cx="-35" cy="-12" r="27" fill="#0d041a" stroke="#f5d08a" stroke-width="5"/>
-            <circle cx="34" cy="-12" r="27" fill="#0d041a" stroke="#f5d08a" stroke-width="5"/>
+  $('btn').addEventListener('click', () => {
+    feito = true;
+    document.body.classList.remove('urgent');
+    document.body.classList.add('done');
+    $('banner').textContent = '🏆 MISSÃO CUMPRIDA, SOLDADO!';
+    $('h').textContent = $('m').textContent = $('s').textContent = '✓';
+    $('fill').style.width = '100%';
+    $('btn').hidden = true;
+    coracoes();
+  });
 
-            <!-- Reflexo de Coração Neon nas Lentes -->
-            <path d="M-35 -3 C-44 -10 -48 -17 -42 -21 C-38 -23 -36 -20 -35 -17 C-34 -20 -32 -23 -28 -21 C-22 -17 -26 -10 -35 -3 Z"
-                  fill="#ff2e7e"/>
-            <path d="M34 -3 C25 -10 21 -17 27 -21 C31 -23 33 -20 34 -17 C35 -20 37 -23 41 -21 C47 -17 43 -10 34 -3 Z"
-                  fill="#ff2e7e"/>
-
-            <!-- Fedora Noturno com Faixa Ouro-Champanhe -->
-            <ellipse cx="0" cy="-38" rx="134" ry="40" fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5"/>
-            <ellipse cx="0" cy="-38" rx="132" ry="38" fill="none" stroke="#ff2e7e" stroke-width="1.5" opacity="0.6"/>
-            <path d="M-72 -38 L-60 -90 Q0 -110 60 -90 L72 -38 Q0 -22 -72 -38 Z"
-                  fill="url(#velvetSuit)" stroke="#070210" stroke-width="4.5" stroke-linejoin="round"/>
-            <path d="M-70 -51 Q0 -35 70 -51 L72 -38 Q0 -22 -72 -38 Z"
-                  fill="url(#champagneGold)" stroke="#070210" stroke-width="3"/>
-          </g>
-        </g>
-
-        <!-- ================= EMBLEMA FLUTUANTE DE NOTIFICAÇÃO (1 DM) ================= -->
-        <g class="animate-hero-float" transform="translate(656, 120)">
-          <circle cx="0" cy="0" r="46" fill="#ff2e7e" opacity="0.22"/>
-          <path d="M-36 -24 H36 A14 14 0 0 1 50 -10 V14 A14 14 0 0 1 36 28 H8 L-10 43 L-8 28 H-36 A14 14 0 0 1 -50 14 V-10 A14 14 0 0 1 -36 -24 Z"
-                fill="#1b0933" stroke="#f5d08a" stroke-width="3.5" stroke-linejoin="round"/>
-          <!-- Coração Neon -->
-          <path d="M0 13 C-16 2 -22 -8 -13 -14 C-7 -18 -2 -14 0 -10 C2 -14 7 -18 13 -14 C22 -8 16 2 0 13 Z"
-                fill="#ff2e7e"/>
-          <!-- Badge "1" -->
-          <circle cx="40" cy="-22" r="14" fill="#ff2e7e" stroke="#fff3d6" stroke-width="2.5"/>
-          <text x="40" y="-17" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="16" fill="#ffffff">1</text>
-        </g>
-
-        <!-- ================= ARTEFACTO SMARTPHONE HOLOGRÁFICO (SEM TEXTO INFERIOR SOBREPOSTO) ================= -->
-        <g id="holo-phone" class="animate-holo" transform="translate(185, 282) rotate(13)">
-          <!-- Moldura Obsidiana & Ouro Champanhe -->
-          <rect x="-76" y="-114" width="152" height="378" rx="28" fill="#0e051f" stroke="#070210" stroke-width="5"/>
-          <rect x="-71" y="-109" width="142" height="368" rx="24" fill="none" stroke="url(#champagneGold)" stroke-width="4"/>
-
-          <!-- Ecrã Luminoso -->
-          <rect x="-54" y="-92" width="108" height="332" rx="16" fill="url(#holoScreen)" stroke="#1f0524" stroke-width="3"/>
-          <rect x="-24" y="-92" width="48" height="11" rx="5.5" fill="#090314"/>
-
-          <!-- Bolha 1: "A escrever..." Animada -->
-          <g>
-            <rect x="-42" y="-60" width="68" height="24" rx="12" fill="#ffffff" opacity="0.94"/>
-            <circle class="dot-1" cx="-22" cy="-48" r="3.2" fill="#ff2e7e"/>
-            <circle class="dot-2" cx="-10" cy="-48" r="3.2" fill="#ff2e7e"/>
-            <circle class="dot-3" cx="2" cy="-48" r="3.2" fill="#ff2e7e"/>
-          </g>
-
-          <!-- Bolha 2: Mensagem Enviada com Coração -->
-          <g>
-            <rect x="-20" y="-26" width="64" height="24" rx="12" fill="#fff3d6" opacity="0.96"/>
-            <line x1="-10" y1="-14" x2="14" y2="-14" stroke="#b8742a" stroke-width="3" stroke-linecap="round"/>
-            <path d="M28 -9 C22 -14 19 -18 23 -20 C25 -21 27 -19 28 -18 C29 -19 31 -21 33 -20 C37 -18 34 -14 28 -9 Z" fill="#ff2e7e"/>
-          </g>
-
-          <!-- Coração Holográfico Central -->
-          <path d="M0 58 C-26 38 -36 19 -20 9 C-10 3 -3 9 0 16 C3 9 10 3 20 9 C36 19 26 38 0 58 Z" fill="#fff0f6" opacity="0.92"/>
-
-          <!-- Indicador Visual Minimalista no Fundo do Ecrã (sem texto sobreposto) -->
-          <rect x="-32" y="188" width="64" height="8" rx="4" fill="#ffffff" opacity="0.45"/>
-
-          <!-- Asas Ouro-Champanhe Laterais -->
-          <path d="M-150 -150 Q-140 -88 -76 -80 L-71 -60 Q-116 -54 -136 -102 Q-144 -124 -150 -150 Z"
-                fill="url(#champagneGold)" stroke="#1a0814" stroke-width="3.5" stroke-linejoin="round"/>
-          <path d="M150 -150 Q140 -88 76 -80 L71 -60 Q116 -54 136 -102 Q144 -124 150 -150 Z"
-                fill="url(#champagneGold)" stroke="#1a0814" stroke-width="3.5" stroke-linejoin="round"/>
-
-          <!-- Joia Rubi Superior -->
-          <g transform="translate(0, -110)">
-            <circle cx="0" cy="0" r="22" fill="#1b0933" stroke="#f5d08a" stroke-width="3.5"/>
-            <path d="M0 11 C-15 0 -20 -9 -11 -15 C-6 -18 -2 -15 0 -10 C2 -15 6 -18 11 -15 C20 -9 15 0 0 11 Z"
-                  fill="#ff2e7e"/>
-          </g>
-        </g>
-      </svg>
-    </div>
-
-    <!-- ================= LOGOTIPO 3D METÁLICO "OPERAÇÃO MANDA DM" ================= -->
-    <div class="relative z-20 -mt-14 sm:-mt-28 w-full max-w-[490px] sm:max-w-[580px] px-4 flex flex-col items-center animate-hero-float">
-      <div class="relative w-full overflow-hidden rounded-3xl">
-        <svg class="w-full h-auto drop-shadow-[0_18px_32px_rgba(0,0,0,0.92)]" viewBox="0 0 660 285" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="logoGoldRim" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#fff8e8"/>
-              <stop offset="45%" stop-color="#f5d08a"/>
-              <stop offset="100%" stop-color="#a86828"/>
-            </linearGradient>
-            <linearGradient id="logoMagentaFill" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#ffd6e8"/>
-              <stop offset="32%" stop-color="#ff2e7e"/>
-              <stop offset="78%" stop-color="#a81356"/>
-              <stop offset="100%" stop-color="#3d0626"/>
-            </linearGradient>
-            <clipPath id="logoTextClip">
-              <rect x="40" y="30" width="580" height="230" rx="20"/>
-            </clipPath>
-          </defs>
-
-          <!-- Brasão Coração Alado (Esquerda) -->
-          <g transform="translate(148, 84) rotate(-14)">
-            <path d="M-20 -5 Q-68 -36 -84 -10 Q-58 -4 -48 6 Q-72 6 -68 22 Q-46 18 -24 12 Z"
-                  fill="url(#logoGoldRim)" stroke="#170414" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M20 -5 Q68 -36 84 -10 Q58 -4 48 6 Q72 6 68 22 Q46 18 24 12 Z"
-                  fill="url(#logoGoldRim)" stroke="#170414" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M0 30 C-32 7 -44 -14 -24 -26 C-13 -34 -4 -26 0 -17 C4 -26 13 -34 24 -26 C44 -14 32 7 0 30 Z"
-                  fill="#ff2e7e" stroke="#170414" stroke-width="4" stroke-linejoin="round"/>
-          </g>
-
-          <!-- Envelope Selado (Direita) -->
-          <g transform="translate(505, 78) rotate(22)">
-            <rect x="-44" y="-28" width="88" height="56" rx="10" fill="#fff3e6" stroke="#240618" stroke-width="3.5"/>
-            <path d="M-42 -26 L0 4 L42 -26" fill="none" stroke="#c97b84" stroke-width="3" stroke-linejoin="round"/>
-            <circle cx="0" cy="4" r="14" fill="#ff2e7e" stroke="#240618" stroke-width="2.5"/>
-            <path d="M0 9 C-7 4 -10 -1 -5 -4 C-3 -5 -1 -4 0 -2 C1 -4 3 -5 5 -4 C10 -1 7 4 0 9 Z" fill="#ffffff"/>
-          </g>
-
-          <!-- Tipografia 3D "OPERAÇÃO" / "MANDA DM" -->
-          <g transform="rotate(-3.5 330 148)">
-            <!-- Linha 1: OPERAÇÃO -->
-            <text x="330" y="122" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="82" letter-spacing="2"
-                  stroke="#120214" stroke-width="20" stroke-linejoin="round" fill="#120214" transform="translate(0, 7)">OPERAÇÃO</text>
-            <text x="330" y="122" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="82" letter-spacing="2"
-                  stroke="url(#logoGoldRim)" stroke-width="12" stroke-linejoin="round" fill="url(#logoMagentaFill)">OPERAÇÃO</text>
-            <text x="330" y="122" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="82" letter-spacing="2"
-                  fill="url(#logoMagentaFill)">OPERAÇÃO</text>
-
-            <!-- Linha 2: MANDA DM -->
-            <text x="330" y="218" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="98" letter-spacing="2"
-                  stroke="#120214" stroke-width="22" stroke-linejoin="round" fill="#120214" transform="translate(0, 8)">MANDA DM</text>
-            <text x="330" y="218" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="98" letter-spacing="2"
-                  stroke="url(#logoGoldRim)" stroke-width="13" stroke-linejoin="round" fill="url(#logoMagentaFill)">MANDA DM</text>
-            <text x="330" y="218" text-anchor="middle" font-family="'Lilita One', sans-serif" font-size="98" letter-spacing="2"
-                  fill="url(#logoMagentaFill)">MANDA DM</text>
-          </g>
-
-          <!-- Brilho Especular Animado -->
-          <g clip-path="url(#logoTextClip)" pointer-events="none">
-            <rect class="logo-sheen" x="0" y="0" width="90" height="300" fill="url(#logoGoldRim)" opacity="0.22"/>
-          </g>
-        </svg>
-      </div>
-
-      <!-- Cápsula Translúcida Editorial -->
-      <div class="studio-glass mt-2 px-4 sm:px-6 py-2.5 rounded-full flex items-center gap-2.5 border border-[#f5d08a]/50 shadow-xl">
-        <span class="text-sm sm:text-base">⏳</span>
-        <h1 id="hero-subtitle" class="font-display text-xs sm:text-sm md:text-base font-extrabold tracking-[0.14em] uppercase text-[#fff3d6] text-center">
-          O TEMPO ESTÁ A ACABAR, SOLDADO!
-        </h1>
-      </div>
-    </div>
-
-    <!-- Linha Divisória Luminosa -->
-    <div class="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#f5d08a]/50 to-transparent"></div>
-  </header>
-
-  <!-- =====================================================================
-       SECÇÃO INFERIOR: RELÓGIO DE PRECISÃO, BARRA DA NOITE & BANNER DE PRAZO
-  ====================================================================== -->
-  <main class="relative z-10 flex-1 w-full vault-atmosphere pt-6 sm:pt-10 pb-12 sm:pb-16 px-4 flex flex-col items-center justify-start">
-
-    <!-- ================= 4 CARTÕES DE LUXO (DIAS, HORAS, MIN, SEG) ================= -->
-    <section aria-label="Contagem Regressiva até à Meia-Noite" class="relative z-20 w-full max-w-[780px] grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5 mb-6 sm:mb-8">
-
-      <!-- CARTÃO 1: DIAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
-          <span>01</span>
-          <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-          </svg>
-          <span>DAYS</span>
-        </div>
-
-        <span id="days-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
-          00
-        </span>
-
-        <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
-          <span class="font-display text-xs sm:text-sm font-extrabold tracking-[0.18em] text-[#f5d08a] uppercase">
-            DIAS
-          </span>
-        </div>
-      </div>
-
-      <!-- CARTÃO 2: HORAS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
-          <span>02</span>
-          <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-          </svg>
-          <span>HRS</span>
-        </div>
-
-        <span id="hours-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
-          07
-        </span>
-
-        <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
-          <span class="font-display text-xs sm:text-sm font-extrabold tracking-[0.18em] text-[#f5d08a] uppercase">
-            HORAS
-          </span>
-        </div>
-      </div>
-
-      <!-- CARTÃO 3: MINUTOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
-          <span>03</span>
-          <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-          </svg>
-          <span>MIN</span>
-        </div>
-
-        <span id="min-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
-          46
-        </span>
-
-        <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
-          <span class="font-display text-xs sm:text-sm font-extrabold tracking-[0.18em] text-[#f5d08a] uppercase">
-            MINUTOS
-          </span>
-        </div>
-      </div>
-
-      <!-- CARTÃO 4: SEGUNDOS -->
-      <div class="studio-glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-between">
-        <div class="w-full flex items-center justify-between text-[#f5d08a]/65 text-[10px] font-mono-num mb-2">
-          <span>04</span>
-          <svg class="w-4 h-4 animate-heartbeat" viewBox="0 0 24 24" fill="#ff2e7e">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-          </svg>
-          <span>SEC</span>
-        </div>
-
-        <span id="sec-val" class="font-mono-num digit-glow text-5xl sm:text-[54px] font-extrabold leading-none tracking-tight my-2">
-          59
-        </span>
-
-        <div class="w-full pt-2.5 mt-2 border-t border-[#f5d08a]/20 text-center">
-          <span class="font-display text-xs sm:text-sm font-extrabold tracking-[0.18em] text-[#f5d08a] uppercase">
-            SEGUNDOS
-          </span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ================= BARRA DE PROGRESSO DO DIA ATÉ À MEIA-NOITE ================= -->
-    <div class="relative z-20 w-full max-w-[780px] mb-7 sm:mb-9 px-1">
-      <div class="flex items-center justify-between text-[11px] sm:text-xs font-mono-num text-pink-200/80 mb-1.5">
-        <span>PROGRESSO DO DIA</span>
-        <span id="day-progress-pct" class="text-[#f5d08a] font-bold">00.0% CONCLUÍDO</span>
-      </div>
-      <div class="w-full h-2.5 rounded-full bg-[#15082b] border border-[#f5d08a]/25 overflow-hidden p-0.5">
-        <div id="day-progress-bar" class="h-full rounded-full bg-gradient-to-r from-[#ff2e7e] via-[#ff75ab] to-[#f5d08a] transition-all duration-300" style="width: 0%;"></div>
-      </div>
-    </div>
-
-    <!-- ================= BANNER HEXAGONAL ESTÁTICO DE PRAZO FINAL ================= -->
-    <section aria-label="Prazo Final" class="relative z-20 w-full max-w-[780px] px-1">
-      <div class="relative w-full flex items-center justify-center">
-        <svg class="w-full h-auto max-h-[112px] drop-shadow-[0_18px_36px_rgba(0,0,0,0.88)]" viewBox="0 0 780 116" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="hexOuterGold" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#fff6e0"/>
-              <stop offset="35%" stop-color="#f5d08a"/>
-              <stop offset="70%" stop-color="#e5989b"/>
-              <stop offset="100%" stop-color="#ffe7ba"/>
-            </linearGradient>
-            <linearGradient id="hexInnerVelvet" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#271047"/>
-              <stop offset="50%" stop-color="#140729"/>
-              <stop offset="100%" stop-color="#0b041a"/>
-            </linearGradient>
-          </defs>
-
-          <!-- Moldura Hexagonal Dourada & Ouro-Rosé -->
-          <polygon points="44,10 736,10 772,58 736,106 44,106 8,58"
-                   fill="url(#hexOuterGold)" stroke="#12031c" stroke-width="4" stroke-linejoin="round"/>
-          <!-- Interior Velvet -->
-          <polygon points="49,17 731,17 762,58 731,99 49,99 18,58"
-                   fill="url(#hexInnerVelvet)" stroke="#12031c" stroke-width="3" stroke-linejoin="round"/>
-          <!-- Filete Luminoso Interno -->
-          <polygon points="53,22 727,22 755,58 727,94 53,94 25,58"
-                   fill="none" stroke="#ff2e7e" stroke-width="1.2" opacity="0.45"/>
-
-          <!-- Ícone Cadeado Dourado -->
-          <g transform="translate(88, 58)">
-            <rect x="-26" y="-26" width="52" height="52" rx="14" fill="#ff2e7e" fill-opacity="0.14" stroke="#f5d08a" stroke-width="1.5" stroke-opacity="0.5"/>
-            <path d="M-10 -3 V-10 C-10 -16 10 -16 10 -10 V-3" stroke="url(#hexOuterGold)" stroke-width="4.5" stroke-linecap="round"/>
-            <rect x="-15" y="-4" width="30" height="23" rx="6" fill="url(#hexOuterGold)" stroke="#140524" stroke-width="2.5"/>
-            <path d="M0 13 C-4.2 9.6 -6 6.8 -3.6 4.8 C-2.2 3.7 -0.6 4.5 0 5.7 C0.6 4.5 2.2 3.7 3.6 4.8 C6 6.8 4.2 9.6 0 13 Z" fill="#140524"/>
-          </g>
-
-          <!-- Texto Central do Prazo -->
-          <text id="banner-main-text" x="422" y="65" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="900" font-size="23" letter-spacing="1.4" fill="#ffffff">
-            PRAZO FINAL: HOJE À MEIA-NOITE (00:00)
-          </text>
-        </svg>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- =====================================================================
-       LÓGICA JAVASCRIPT (RELÓGIO REAL ATÉ 00:00 & PROGRESSO DO DIA)
-  ====================================================================== -->
-  <script>
-    (function () {
-      const daysEl = document.getElementById('days-val');
-      const hoursEl = document.getElementById('hours-val');
-      const minEl = document.getElementById('min-val');
-      const secEl = document.getElementById('sec-val');
-      const progressPctEl = document.getElementById('day-progress-pct');
-      const progressBarEl = document.getElementById('day-progress-bar');
-      const subtitleEl = document.getElementById('hero-subtitle');
-
-      function padZero(num) {
-        return String(Math.max(0, Math.floor(num))).padStart(2, '0');
-      }
-
-      function updateCountdown() {
-        const now = new Date();
-
-        // Início do dia atual (00:00:00.000 de hoje)
-        const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
-        // Fim do dia atual (23:59:59.999) / Próxima meia-noite (00:00:00.000 de amanhã)
-        const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
-        const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
-
-        const totalDayMs = endOfDay.getTime() - startOfDay.getTime();
-        const elapsedMs = Math.max(0, now.getTime() - startOfDay.getTime());
-        const remainingMs = Math.max(0, midnight.getTime() - now.getTime());
-
-        // Cálculo preciso do progresso do dia (0.0% a 100.0%)
-        const pct = Math.min(100, Math.max(0, (elapsedMs / totalDayMs) * 100));
-        const pctFormatted = pct.toFixed(1);
-
-        if (progressPctEl) {
-          progressPctEl.textContent = pctFormatted + '% CONCLUÍDO';
-        }
-        if (progressBarEl) {
-          progressBarEl.style.width = pctFormatted + '%';
-        }
-
-        // Cálculo do tempo restante até às 00:00
-        const totalSeconds = Math.floor(remainingMs / 1000);
-        const days = Math.floor(totalSeconds / 86400);
-        const hours = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-
-        if (daysEl) daysEl.textContent = padZero(days);
-        if (hoursEl) hoursEl.textContent = padZero(hours);
-        if (minEl) minEl.textContent = padZero(minutes);
-        if (secEl) secEl.textContent = padZero(seconds);
-
-        // Modo alerta vermelho nos últimos 15 minutos antes da meia-noite
-        const isUrgent = totalSeconds > 0 && totalSeconds <= 900;
-        [daysEl, hoursEl, minEl, secEl].forEach(function (el) {
-          if (!el) return;
-          if (isUrgent) {
-            el.classList.add('digit-urgent');
-          } else {
-            el.classList.remove('digit-urgent');
-          }
-        });
-
-        if (totalSeconds === 0 && subtitleEl) {
-          subtitleEl.textContent = 'TEMPO ESGOTADO! MANDA AGORA!';
-        }
-      }
-
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
-    })();
-  </script>
+  tick();
+  setInterval(tick, 1000);
+</script>
 </body>
 </html>
